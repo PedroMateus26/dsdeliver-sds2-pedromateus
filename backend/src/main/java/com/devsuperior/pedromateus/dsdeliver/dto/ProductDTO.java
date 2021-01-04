@@ -1,4 +1,4 @@
-package com.devsuperior.pedromateus.dsdeliver;
+package com.devsuperior.pedromateus.dsdeliver.dto;
 
 import com.devsuperior.pedromateus.dsdeliver.entities.Product;
 

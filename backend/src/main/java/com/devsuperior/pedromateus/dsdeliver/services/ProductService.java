@@ -1,6 +1,6 @@
 package com.devsuperior.pedromateus.dsdeliver.services;
 
-import com.devsuperior.pedromateus.dsdeliver.ProductDTO;
+import com.devsuperior.pedromateus.dsdeliver.dto.ProductDTO;
 import com.devsuperior.pedromateus.dsdeliver.entities.Product;
 import com.devsuperior.pedromateus.dsdeliver.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
