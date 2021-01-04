@@ -32,14 +32,14 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Long id, String address, String latitude, String longitude, Instant moment, OrderStatus status, Set<Product> products) {
+    public Order(Long id, String address, String latitude, String longitude, Instant moment, OrderStatus status) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.moment = moment;
         this.status = status;
-        this.products = products;
+
     }
 
     public Long getId() {
