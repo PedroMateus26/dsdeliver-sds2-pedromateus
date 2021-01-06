@@ -7,7 +7,7 @@ const Footer=()=>{
     return (
         <footer className="main-footer">
             App desenvolvido durante a 2ª ed. do evento Semana DevSuperior
-            <div className="footer-incons">
+            <div className="footer-icons">
                 <a href="https://www.youtube.com/devsuperior" target="_new">
                     <YouTubeIcon/>
                 </a>
