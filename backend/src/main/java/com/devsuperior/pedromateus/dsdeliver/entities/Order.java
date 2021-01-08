@@ -4,8 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_order")
@@ -84,6 +86,11 @@ public class Order implements Serializable {
 
     public OrderStatus getStatus() {
         return status;
+    }
+
+    public Double getTotal(){
+       return products.stream().mapToDouble(elem->elem.getPrice())
+               .reduce(0.0,(acc,elem)->acc+elem);
     }
 
     public void setStatus(OrderStatus status) {
