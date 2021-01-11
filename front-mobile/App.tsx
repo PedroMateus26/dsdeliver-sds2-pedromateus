@@ -1,10 +1,10 @@
-import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
-import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Header from './Header';
-import Home from './Home';
+import { StatusBar } from 'expo-status-bar';
+import AppLoading from 'expo-app-loading';
+import { useFonts, OpenSans_400Regular, OpenSans_700Bold } from '@expo-google-fonts/open-sans';
+import Header from './src/Header';
+import Routes from './src/Routes';
 
 export default function App() {
 
@@ -20,15 +20,14 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header/>
-      <Home/>
+      <Routes/>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    
-    backgroundColor: '#fff',
-   
+    flex:1,
+    backgroundColor:'#FFF'
   },
 });
