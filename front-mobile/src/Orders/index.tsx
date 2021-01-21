@@ -5,50 +5,54 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 import { fetchOrders } from "../api";
 import OrderCard from "../OrderCard";
 import { Order } from "../types";
+import Header from "../Header";
 
 const Orders = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
-  const isFocused=useIsFocused();
+  const isFocused = useIsFocused();
 
-  const fetchData=()=>{
+  const fetchData = () => {
     setIsLoading(true);
     fetchOrders()
       .then((response) => {
         setOrders(response.data);
       })
-      .catch((error) => Alert.alert("Ocorreu erros ao listar pedidos"))
+      .catch(() => Alert.alert("Ocorreu erros ao listar pedidos"))
       .finally(() => setIsLoading(false));
-  }
+  };
 
   useEffect(() => {
-    if(isFocused){
-        fetchData();
+    if (isFocused) {
+      fetchData();
     }
-  }, []);
+  }, [isFocused]);
 
-  const handleOnPress = (order:Order) => {
-    navigation.navigate("OrderDetails",{
-        order
+  const handleOnPress = (order: Order) => {
+    navigation.navigate("OrderDetails", {
+      order,
     });
   };
 
   return (
-    <ScrollView style={styles.container}>
-      {isLoading ? (
-        <Text>Carregando pedidos</Text>
-      ) : (
-        orders.map((order) => {
-          <TouchableWithoutFeedback 
-          key={order.id}
-          onPress={()=>handleOnPress(order)}
-          >
-            <OrderCard order={order} />
-          </TouchableWithoutFeedback>;
-        })
-      )}
-    </ScrollView>
+    <>
+      <Header />
+      <ScrollView style={styles.container}>
+        {isLoading ? (
+          <Text>Carregando pedidos...</Text>
+        ) : (
+          orders.map((order) => (
+            <TouchableWithoutFeedback
+              key={order.id}
+              onPress={() => handleOnPress(order)}
+            >
+              <OrderCard order={order} />
+            </TouchableWithoutFeedback>
+          ))
+        )}
+      </ScrollView>
+    </>
   );
 };
 

@@ -4,8 +4,8 @@ export type Order={
     latitude:number,
     longitude:number,
     moment:string,
-    status:string,
-    product:Product[],
+    state:string,
+    products:Product[],
     total:number
 }
 

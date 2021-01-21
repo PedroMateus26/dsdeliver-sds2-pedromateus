@@ -13,14 +13,14 @@ type Props = {
 };
 
 const dateFromNow=(date:string)=>{
-    return dayjs().fromNow()
+    return dayjs(date).fromNow()
 }
 
 export const formatPrice=(price:number)=>{
     const formatter= new Intl.NumberFormat('pt-BR',{
         style:'currency',
         currency:'BRL',
-
+        minimumFractionDigits: 2,
     });
     return formatter.format(price);
 }
@@ -30,15 +30,15 @@ const OrderCard = ({ order }: Props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.orderName}>Pedido: {order.id}</Text>
-        <Text style={styles.orderPrice}>R$ {formatPrice(order.total)}</Text>
+        <Text style={styles.orderPrice}>{order.total.toFixed(2)}</Text>
       </View>
-      <Text style={styles.text}>R$ {dateFromNow(order.moment)}</Text>
+      <Text style={styles.text}>{dateFromNow(order.moment)}</Text>
       <View style={styles.productsList}>
-        {order.product.map((product) => {
+        {order.products.map((product) =>(
           <Text key={product.id} style={styles.text}>
-            {product.imgUrl}
-          </Text>;
-        })}
+          {product.name}
+        </Text>
+        ))}
       </View>
     </View>
   );
